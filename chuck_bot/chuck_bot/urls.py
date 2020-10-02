@@ -17,11 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
 
-from bot_admin.views import WebHookView, SetWebHookView
+from bot_admin.views import WebHookView
 from .settings import BOT_TOKEN
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(f'{BOT_TOKEN}', csrf_exempt(WebHookView.as_view())),
-    path('set_webhook/', csrf_exempt(SetWebHookView.as_view())),
 ]
